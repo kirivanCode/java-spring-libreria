@@ -21,11 +21,10 @@ public class LibroSeleccionado {
     @JoinColumn(name = "id_libro")
     private Libro libro;
 
-  
-      @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
-    private Usuario usuarios; 
-     
+    private Usuario usuarios;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_factura", referencedColumnName = "id")
     private Factura factura;
@@ -33,6 +32,7 @@ public class LibroSeleccionado {
     private int cantidad;
     private String comprallave;
 
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -49,7 +49,14 @@ public class LibroSeleccionado {
         this.libro = libro;
     }
 
-   
+    public Usuario getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuario usuarios) {
+        this.usuarios = usuarios;
+    }
+
     public Factura getFactura() {
         return factura;
     }
@@ -73,6 +80,5 @@ public class LibroSeleccionado {
     public void setComprallave(String comprallave) {
         this.comprallave = comprallave;
     }
-
-	
 }
+

@@ -3,46 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Libro Seleccionado</title>
+    <title>Nuevo Libro Seleccionado</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
 </head>
+<header th:replace="layout/plantilla :: header"></header>
 <body>
- <header th:replace="layout/plantilla :: header"></header>
     <div class="container mt-5">
-        <h1 class="mb-4">Editar Libro Seleccionado</h1>
-        <form th:action="@{/views/libroSeleccionado/update/{id}(id=${libroSeleccionado.id})}" method="post">
+        <h1 class="mb-4">Agregar Libro Seleccionado</h1>
+        <form action="/views/libroSeleccionado/save" method="post">
+        
             <div class="form-group">
                 <label for="id_libro">Libro:</label>
                 <select id="id_libro" name="libro.id_libro" class="form-control" required>
-                    <option value="" disabled>-- Seleccione --</option>
-                    <option th:each="libro : ${listaLibros}" th:value="${libro.id_libro}" th:text="${libro.titulo}" th:selected="${libro.id_libro == libroSeleccionado.libro.id_libro}"></option>
+                    <option value="" disabled selected>-- Seleccione --</option>
+                    <option th:each="libro : ${listaLibros}" th:value="${libro.id_libro}" th:text="${libro.titulo}"></option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="id_usuario">Usuario:</label>
                 <select id="id_usuario" name="usuarios.id" class="form-control" required>
-                    <option value="" disabled>-- Seleccione --</option>
-                    <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}" th:selected="${usuario.id == libroSeleccionado.usuarios.id}"></option>
+                    <option value="" disabled selected>-- Seleccione --</option>
+                    <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}"></option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="id_factura">Factura:</label>
                 <select id="id_factura" name="factura.id" class="form-control" required>
-                    <option value="" disabled>-- Seleccione --</option>
-                    <option th:each="factura : ${listaFacturas}" th:value="${factura.id}" th:text="${factura.id}" th:selected="${factura.id == libroSeleccionado.factura.id}"></option>
+                    <option value="" disabled selected>-- Seleccione --</option>
+                    <option th:each="factura : ${listaFacturas}" th:value="${factura.id}" th:text="${factura.id}"></option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" th:value="${libroSeleccionado.cantidad}" class="form-control" required>
+                <input type="number" id="cantidad" name="cantidad" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="comprallave">Compra Llave:</label>
-                <input type="text" id="comprallave" name="comprallave" th:value="${libroSeleccionado.comprallave}" class="form-control" required>
+                <input type="text" id="comprallave" name="comprallave" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
             <a href="/views/libroSeleccionado" class="btn btn-secondary">Regresar</a>
         </form>
     </div>
@@ -51,3 +52,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

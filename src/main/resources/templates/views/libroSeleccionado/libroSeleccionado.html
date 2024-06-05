@@ -1,103 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/plantilla :: head">
-    <title>Carrito</title>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Factura de los libros comprados</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-        }
-        h1 {
-            margin-top: 20px;
-            color: #343a40;
-            font-size: 10vw;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(0,0,0,.05);
-        }
-        .btn-success {
-            margin-bottom: 20px;
-        }
-        .table thead th {
-            background-color: #007bff;
-            color: white;
-        }
-        .table td {
-            vertical-align: middle;
-        }
-        .table td img {
-            width: 20px;
-            height: 20px;
-        }
-    </style>
 </head>
+<header th:replace="layout/plantilla :: header"></header>
 <body>
-    <header th:replace="layout/plantilla :: header"></header>
-    <div class="container">
-        <center><h1>xd</h1></center>
-        
-        <div><a href="/views/libroSeleccionado/new" class="btn btn-success"><i class="fas fa-plus"></i> Nuevo Libro</a></div>
-        
-        <p></p>
-        <!-- Formulario de creación de nuevo libro seleccionado -->
-        <form th:action="@{/views/libroSeleccionado/save}" method="post">
-            <div class="form-group">
-                <label for="libro">Libro ID:</label>
-                <input type="text" class="form-control" id="libro" name="libro" placeholder="Ingrese el ID del libro">
-            </div>
-            <div class="form-group">
-                <label for="factura">Factura ID:</label>
-                <input type="text" class="form-control" id="factura" name="factura" placeholder="Ingrese el ID de la factura">
-            </div>
-            <div class="form-group">
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad">
-            </div>
-            <div class="form-group">
-                <label for="comprallave">Compra Llave:</label>
-                <input type="text" class="form-control" id="comprallave" name="comprallave" placeholder="Ingrese la llave de compra">
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
 
-        <p></p>
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Libro</th>
-                        <th>Factura</th>
-                        <th>Cantidad</th>
-                        <th>Compra Llave</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="libroseleccionado: ${librosSeleccionado}">
-                        <td th:text="${libroseleccionado.id}"></td>
-                        <td th:text="${libroseleccionado.libro.id_libro}"></td>
-                        <td th:text="${libroseleccionado.factura.id}"></td>
-                        <td th:text="${libroseleccionado.cantidad}"></td>
-                        <td th:text="${libroseleccionado.comprallave}"></td>
-                        <td>
-                            <a th:href="@{/views/libroSeleccionado/listar/{id}(id=${libroseleccionado.id})}">Editar</a> |
-                            <a th:href="@{/views/libroSeleccionado/delete/{id}(id=${libroseleccionado.id})}">Eliminar</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="container mt-5">
+        <h1 class="mb-4">Factura del libro</h1>
+        <a href="/views/libroSeleccionado/new" class="btn btn-primary mb-3">Nueva factura</a>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>ID Libro</th>
+                    <th>ID Usuario</th>
+                    <th>ID Factura</th>
+                    <th>Cantidad</th>
+                    <th>Compra Llave</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="libroSeleccionado : ${librosSeleccionados}">
+                    <td th:text="${libroSeleccionado.id}"></td>
+                    <td th:text="${libroSeleccionado.libro.id_libro}"></td>
+                    <td th:text="${libroSeleccionado.usuarios.id}"></td>
+                    <td th:text="${libroSeleccionado.factura.id}"></td>
+                    <td th:text="${libroSeleccionado.cantidad}"></td>
+                    <td th:text="${libroSeleccionado.comprallave}"></td>
+                    <td>
+                        <a th:href="@{/views/libroSeleccionado/edit/{id}(id=${libroSeleccionado.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/views/libroSeleccionado/delete/{id}(id=${libroSeleccionado.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <footer th:replace="layout/plantilla :: footer"></footer>
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 
