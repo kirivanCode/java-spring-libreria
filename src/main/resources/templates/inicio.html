@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inicio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+   
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/img/inicioxd.jpg");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <header class="container" th:replace="layout/plantilla.html :: header"></header>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Bienvenido a Restless Dreams</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Tu librería virtual con los mejores libros de todos los géneros</span><br>
+    <span class="w3-large">donde podras ser tu mismo</span>
+    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Leer mas y empezar a explorar</a></p>
+  </div> 
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">Acerca de esta organizacion</h3>
+  <p class="w3-center w3-large">somos el mejor team v:</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Responsiva</p>
+      <p>brindamos una buena interfaz</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Pasion</p>
+      <p>somo una empresa pequeña enpeñada en el desarrollo y la venta de libros en linea</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Diseño</p>
+      <p>el mejor diseño que pueda ofrecer nuestra pagina</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Soporte</p>
+      <p>disponibles las 24 horas del dia, para ofrecer la mayor felicidad</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section - "We know design" -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>Conocenos</h3>
+      <p>
+En nuestra tienda virtual de libros, combinamos lo mejor de ambos mundos: la pasión por la lectura y la comodidad del comercio en línea. Sabemos que la vida puede ser desafiante, y es por eso que nos dedicamos a recopilar una selección de los mejores libros, tanto para la venta como para la compra. Nuestro objetivo es proporcionarte una fuente de inspiración a través de la lectura.
+
+Creemos firmemente en el poder de los libros para transformar vidas. Cada página, cada historia, cada conocimiento compartido puede ser una chispa de motivación para seguir adelante. Esta página nace de nuestra convicción de que todos merecemos un motivo para continuar y encontrar la belleza en medio de las dificultades.
+
+Nuestra misión es ofrecerte una experiencia única, donde puedes explorar un vasto catálogo de obras que abarcan todos los géneros y temas. Desde clásicos atemporales hasta las últimas novedades, aquí encontrarás libros que alimentarán tu mente y tu alma. Además, contamos con un equipo de apasionados por la lectura, siempre dispuestos a ayudarte a encontrar ese libro especial que estás buscando.
+
+Te invitamos a descubrir nuestro espacio, diseñado para amantes de la lectura como tú. Ya sea que estés buscando una novela que te transporte a otro mundo, un ensayo que te haga reflexionar o un manual que te enseñe algo nuevo, estamos aquí para ayudarte en tu viaje literario.
+
+Gracias por ser parte de nuestra comunidad. Juntos, sigamos encontrando motivos para inspirarnos y avanzar, página tras página.
+     </p>
+     <p>Buacamos un motivo para seguir adelante, por eso creamos esta pagina</p>
+      <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i> Vizualiza nuestro trabajo</a></p>
+    </div>
+    <div class="w3-col m6">
+      <img class="w3-image w3-round-large" src="/img/foto1.jpg" alt="Buildings" width="400" height="394">
+    </div>
+  </div>
+</div>
+
+<!-- Team Section -->
+<div class="w3-container" style="padding:128px 16px" id="team">
+  <h3 class="w3-center">El team</h3>
+  <p class="w3-center w3-large">Los que dirige esta empresa</p>
+  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="/img/foto2.jpg" alt="John" style="width:100%">
+        <div class="w3-container">
+          <h3>Ivan sierra</h3>
+          <p class="w3-opacity">CEO & Fundador</p>
+          <p>Desarrollador backend y fronted de la empresa</p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contacto</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="/img/foto3.jpg" alt="Jane" style="width:94%">
+        <div class="w3-container">
+          <h3>Jhoan Sebastian</h3>
+          <p class="w3-opacity">Web Designer</p>
+          <p>Desarrollador de la data base y consejero de la empresa</p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contacto</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="/img/foto4.jpg" alt="Mike" style="width:94%">
+        <div class="w3-container">
+          <h3>Gabriela garcia</h3>
+          <p class="w3-opacity">Diseño y soporte</p>
+          <p>Plantamiento de la idea y busqueda de informacion</p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Promo Section "Statistics" -->
+<div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">3</span>
+    <br>Colaboradores
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">0</span>
+    <br>Proyectos hechos
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">1</span>
+    <br>Clientes felices
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">2</span>
+    <br>Reuniones
+  </div>
+</div>
+
+<!-- Work Section -->
+<div class="w3-container" style="padding:128px 16px" id="work">
+  <h3 class="w3-center">Nuestro trabajo</h3>
+  <p class="w3-center w3-large">Lo que hemos hecho por la gente</p>
+
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="/w3images/nada.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Nada">
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Skills Section -->
+<div class="w3-container w3-light-grey w3-padding-64">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>Nuestra Habilidades</h3>
+      <p>Esto en en base a lo realizado durante el semestre y desde la vista del estudiante</p>
+      <p>Segun nuestra experiencia alquirida</p>
+    </div>
+    <div class="w3-col m6">
+      <p class="w3-wide"><i class="fa fa-camera w3-margin-right"></i>Backend</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:50%">50%</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-desktop w3-margin-right"></i>Diseño web</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:60%">60%</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>Base de datos</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:40%">40%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Contact Section -->
+<div class="w3-container" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">Contacto</h3>
+  <p class="w3-center w3-large">Mantengámonos en contacto. Mandanos un mensaje:</p>
+  <div style="margin-top:48px">
+    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Bucaramanga, Santander</p>
+    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Telefono: +57 3005873017</p>
+    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: idariosierra@uts.edu.co</p>
+    <br>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-border" type="text" placeholder="Nombre" required name="Name"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Tema" required name="Subject"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="mensaje" required name="Message"></p>
+      <p>
+        <button class="w3-button w3-black" type="submit">
+          <i class="fa fa-paper-plane"></i> Mandar mensaje
+        </button>
+      </p>
+    </form>
+    <!-- Image of location/map -->
+    <img src="/img/map.jpg" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
+  </div>
+</div>
+
+<!-- Footer -->
+
+   <footer th:replace="layout/plantilla.html :: footer"></footer>
+
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>
+</html>

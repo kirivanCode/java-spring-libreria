@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Inicio de sesión</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+<style>
+    body {
+        padding-top: 70px;
+        background-color: #f0f8ff;
+        font-size: 1.2em;
+    }
+    .navbar-inverse {
+        background-color: #333;
+        border-color: #333;
+    }
+    .navbar-inverse .navbar-brand {
+        color: #fff;
+        font-size: 2em;
+    }
+    .navbar-inverse .navbar-brand:hover {
+        color: #ddd;
+    }
+    h1 {
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        color: #333;
+        
+    }
+    .form-group label {
+        font-size: 1.2em;
+        color: #333;
+    }
+    .form-control {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+    .btn-primary {
+        width: 100%;
+        font-size: 1.2em;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+    .btn-primary:hover {
+        background-color: #4cae4c;
+        border-color: #398439;
+    }
+    .alert {
+        margin-top: 20px;
+        font-size: 1.2em;
+    }
+    .container {
+        max-width: 600px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .card{
+     margin-top:60px;
+    }
+    .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <h1>Tiendas Virtuales restless dreams</h1>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container card">
+   
+        <img th:src="@{/img/profile1.jpg}" alt="Perfil" class="profile-img">
+        <center><h1>Inicio de sesión</h1></center>
+        <form th:action="@{/login}" method="post">
+
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Usuario o contraseña inválidos</div>
+            </div>
+
+            <div th:if="${param.logout}">
+                <div class="alert alert-info">Ha cerrado sesión exitosamente</div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Nombre de usuario:</label>
+                <input id="username" name="username" type="text" class="form-control" required autofocus="autofocus" placeholder="Digite su email ID">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input id="password" type="password" name="password" class="form-control" required placeholder="Digite su contraseña">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="login-submit" id="login-submit" value="Iniciar sesión">
+            </div>
+        </form>
+        <div class="form-group">
+            <span>Si eres nuevo usuario <a th:href="@{/registro}">regístrate aquí</a></span>
+        </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
