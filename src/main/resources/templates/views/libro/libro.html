@@ -7,88 +7,99 @@
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #fff; /* Fondo blanco */
             font-family: 'Arial', sans-serif;
+            color: #333; /* Color del texto principal */
         }
         h1 {
             margin-top: 20px;
-            color: #343a40;
+            color: #ff6347; /* Color del título */
             font-size: 3rem;
         }
+        p {
+            color: #333; /* Color del texto del párrafo */
+        }
         .container {
-            margin-top: 50px;
+            margin-top: 70px; /* Aumentado para compensar el header fijo */
         }
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(0, 0, 0, .05);
-        }
-        .btn-success {
+        .card {
             margin-bottom: 20px;
         }
-        .table thead th {
-            background-color: #007bff;
-            color: white;
+        .card img {
+            height: 200px;
+            width: 100%;
+            object-fit: contain; /* Asegura que las imágenes estén completas y bien proporcionadas */
         }
-        .table td {
-            vertical-align: middle;
+        .card-body, .card-text, .card-title {
+            color: #333; /* Color del texto en las tarjetas */
         }
-        .table td img {
-            width: 50px;
-            height: 50px;
+        .btn-success {
+            border-radius: .25rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 0 25px;
+            color: #fff;
+            height: 40px;
+            font-size: 0.7rem;
+            line-height: 14px;
+            letter-spacing: 1.2px;
+            transition: .2s .1s;
+            background-image: linear-gradient(90deg, #28a745, #218838); /* Gradiente verde */
+            border: none;
+            overflow: hidden;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border: none;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+        }
+        /* Nuevo CSS para el header fijo */
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1030; /* Asegura que el header esté por encima de otros elementos */
         }
     </style>
 </head>
 <body>
-    <header th:replace="layout/plantilla :: header"></header>
+    <header class="container fixed-top" th:replace="layout/plantilla.html :: header"></header>
     <div class="container">
         <center><h1>Lista de Libros</h1></center>
-        <div>
+        <p class="text-center mb-4">Explora nuestra colección de libros. Aquí encontrarás una variedad de géneros y autores. ¡Encuentra tu próxima lectura favorita!</p>
+        <div class="mb-3 text-center">
             <a href="/views/libro/new" class="btn btn-success">
-                <i class="fas fa-plus"></i> Nuevo Libro
+                <i class="fas fa-plus"></i> Agregar Nuevo Libro
             </a>
         </div>
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Género</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th>Imagen</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="libro : ${listalibro}">
-                        <td th:text="${libro.id_libro}"></td>
-                        <td th:text="${libro.titulo}"></td>
-                        <td th:text="${libro.autor}"></td>
-                        <td th:text="${libro.genero}"></td>
-                        <td th:text="${libro.precio}"></td>
-                        <td th:text="${libro.stock}"></td>
-                        <td>
-    					<img th:src="${libro.imagen}" alt="Imagen del libro" width="200" height="100"/>
-						</td>
-                        
-                        <td>
-                            <a th:href="@{'/views/libro/listar/' + ${libro.id_libro}}" class="btn btn-info btn-sm">
-                                <i class="fas fa-pen"></i>
-                            </a>
-                            <a th:href="@{'/views/libro/delete/' + ${libro.id_libro}}" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6" th:each="libro : ${listalibro}">
+                <div class="card">
+                    <img th:src="${libro.imagen}" class="card-img-top" alt="Imagen del libro">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${libro.titulo}">Título del Libro</h5>
+                        <h6 class="card-title" th:text="${libro.autor}">Autor del Libro</h6>
+                        <h6 class="card-title" th:text="${libro.genero}">Género</h6>
+                        <h6 class="card-title" th:text="${libro.precio}">Precio</h6>
+                        <h6 class="card-title" th:text="${libro.stock}">Stock</h6>
+                        <a th:href="@{'/views/libro/listar/' + ${libro.id_libro}}" class="btn btn-info btn-sm">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a th:href="@{'/views/libro/delete/' + ${libro.id_libro}}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <footer th:replace="layout/plantilla :: footer"></footer>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
-
 </html>
 
