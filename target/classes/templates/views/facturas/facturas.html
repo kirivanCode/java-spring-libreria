@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Facturas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+</head>
+<body>
+<header th:replace="layout/plantilla :: header"></header>
+    <div class="container">
+        <h1>Factura del libro</h1>
+        <a class="btn btn-primary" th:href="@{/views/facturas/nuevo}">Nueva Factura</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="factura : ${facturas}">
+                    <td th:text="${factura.id}">1</td>
+                    <td th:text="${factura.total}">100.00</td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/views/facturas/editar/{id}(id=${factura.id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{/views/facturas/eliminar/{id}(id=${factura.id})}">Eliminar</a>
+                       
+                    </td>
+                    
+                     
+                </tr>
+                  
+                  
+            </tbody>
+        </table>
+           <a class="btn btn-secondary" th:href="@{/inicio}">salir</a>
+           
+    </div>
+     
+</body>
+</html>
+

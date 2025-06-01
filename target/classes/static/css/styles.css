@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-image {
+    width: 200px; /* Tamaño inicial de la imagen */
+    height: auto;
+    margin: 10px;
+    transition: transform 0.3s ease; /* Transición suave al cambiar de tamaño */
+}
+
+.gallery-image:hover {
+    transform: scale(1.2); /* La imagen se ampliará al pasar el ratón sobre ella */
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>Proyecto Corte 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+    <style>
+        .divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, .15);
+        }
+        .text-justify {
+            text-align: justify;
+        }
+        .custom-bg {
+            background-color: #343a40; /* Color de fondo personalizado en negro */
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff; /* Texto en blanco */
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #d1d1d1; /* Texto en gris claro al pasar el ratón */
+        }
+        .btn-outline-light {
+            border-color: #d1d1d1; /* Borde de botón claro */
+            color: #d1d1d1; /* Texto del botón claro */
+        }
+        .btn-outline-light:hover {
+            background-color: #d1d1d1; /* Fondo del botón claro al pasar el ratón */
+            color: #343a40; /* Texto oscuro */
+        }
+        h1, h2, h3, p {
+            color: white;
+        }
+        .navbar-brand img {
+            max-height: 60px;
+        }
+        .button {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  background-color: rgb(0 107 179);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffff;
+  gap: 10px;
+  font-weight: bold;
+  border: 3px solid #ffffff4d;
+  outline: none;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  border-color: #fff9;
+}
+
+.button:hover .icon {
+  transform: translate(4px);
+}
+
+.button:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+        
+    </style>
+</head>
+<body>
+    <!-- BARRA DE NAVEGACION -->
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+            <!-- ENLACES DEL MENU -->
+            <a th:href="@{/inicio}" class="navbar-brand d-flex align-items-center">
+                <img th:src="@{/img/perfil.png}" alt="Logo Tienda"/>
+                <span class="fs-4 ms-3">Libreria Virtual</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/inicio">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/views/libro/">
+                            <i class="fas fa-book"></i> Libros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/views/facturas/">
+                            <i class="fas fa-file-invoice"></i> Facturas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/views/libroSeleccionado/}">
+                            <i class="fas fa-shopping-cart"></i> Carrito
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- MENSAJES -->
+        <div class="container mt-3">
+            <div class="alert alert-success alert-dismissable" th:if="${success != null}">
+                <label th:text="${success}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="alert alert-danger alert-dismissable" th:if="${error != null}">
+                <label th:text="${error}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="alert alert-warning alert-dismissable" th:if="${warning != null}">
+                <label th:text="${warning}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="alert alert-info alert-dismissable" th:if="${info != null}">
+                <label th:text="${info}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    </header>
+    <!-- CONTENIDO -->
+    <div class="container custom-bg text-white py-4">
+        <div class="row">
+            <div class="col-md-8 p-4">
+                <h1 class="text-uppercase">Libreria Virtual Restless Dreams</h1>
+                <h2>Bienvenido</h2>
+                <h2>Feliciadades por entrar a nuestro dominio</h2>
+                 <p>Donde podras encontrar cualquier libro</p>
+            </div>
+            <div class="col-md-4 text-center p-4">
+                <img th:src="@{/img/profile1.jpg}" class="img-fluid rounded" alt="Perfil">
+            </div>
+        </div>
+        
+        <a href="/views/libro/" class="button">
+            Descubre nuestra catálogo
+            <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                <path
+                    clip-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                    fill-rule="evenodd"
+                ></path>
+            </svg>
+        </a>
+    </div>
+    
+    <!-- PIE DE PAGINA -->
+    
+</body>
+</html>
+

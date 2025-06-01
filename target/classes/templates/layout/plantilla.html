@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>Proyecto Corte 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        .divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, .15);
+        }
+        .text-justify {
+            text-align: justify;
+        }
+        .custom-bg {
+            background-color: #343a40; /* Color de fondo personalizado en negro */
+        }
+        .navbar {
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff; /* Texto en blanco */
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #d1d1d1; /* Texto en gris claro al pasar el ratón */
+        }
+        .btn-outline-light {
+            border-color: #d1d1d1; /* Borde de botón claro */
+            color: #d1d1d1; /* Texto del botón claro */
+        }
+        .btn-outline-light:hover {
+            background-color: #d1d1d1; /* Fondo del botón claro al pasar el ratón */
+            color: #343a40; /* Texto oscuro */
+        }
+        h1, h2, h3, p {
+            color: blue;
+        }
+        .navbar-brand img {
+            max-height: 60px;
+        }
+        .navbar-container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        .btn-success{
+  border-radius: .25rem;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: #fff;
+  -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+  clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+  height: 40px;
+  font-size: 0.7rem;
+  line-height: 14px;
+  letter-spacing: 1.2px;
+  transition: .2s .1s;
+  background-image: linear-gradient(90deg,#1c1c1c,#6220fb);
+  border: 0 solid;
+  overflow: hidden;
+}
+
+
+	.btn-success:hover {
+  cursor: pointer;
+  transition: all .3s ease-in;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+ .fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1030; /* Asegura que el header esté por encima de otros elementos */
+        }
+    </style>
+</head>
+<body>
+    <!-- BARRA DE NAVEGACION -->
+    <header th:fragment="header">
+        
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- ENLACES DEL MENU -->
+                <a th:href="@{/inicio}" class="navbar-brand d-flex align-items-center">
+                    <img th:src="@{/img/perfil.png}" height="60" alt="Logo Tienda"/>
+                    <span class="fs-4 ms-3">Restless Dreams</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/inicio">
+                                <i class="fas fa-home"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/views/libro/">
+                                <i class="fas fa-book"></i> Libros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/views/facturas/">
+                                <i class="fas fa-file-invoice"></i> Facturas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/views/libroSeleccionado/}">
+                                <i class="fas fa-shopping-cart"></i> Carrito
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+       
+        <!-- MENSAJES -->
+        <div class="container mt-3">
+            <div class="alert alert-success alert-dismissable" th:if="${success != null}">
+                <label th:text="${success}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="alert alert-danger alert-dismissable" th:if="${error != null}">
+                <label th:text="${error}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="alert alert-warning alert-dismissable" th:if="${warning != null}">
+                <label th:text="${warning}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <div class="alert alert-info alert-dismissable" th:if="${info != null}">
+                <label th:text="${info}"></label>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    </header>
+    <!-- CONTENIDO -->
+    <div class="container custom-bg text-white py-4">
+        <div class="row">
+            <div class="col-md-8 p-4">
+                <h1 class="text-uppercase">Libreria Virtual Restless Dreams</h1>
+                <h2>Kirivan</h2>
+                <h2>We have to move ahead</h2>
+            </div>
+            <div class="col-md-4 text-center p-4">
+                <img th:src="@{/img/perfil.png}" class="img-fluid rounded" alt="Perfil">
+            </div>
+        </div>
+    </div>
+    <!-- PIE DE PAGINA -->
+    <footer th:fragment="footer" class="bg-dark text-center text-white py-3">
+        <div class="container">
+            <p>&copy; 2024 Ing. Ivan Sierra</p>
+        </div>
+        <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/popper.js/umd/js/popper.min.js}"></script>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <title>Crear Insumo</title>
+</head>
+<body>
+    <header th:replace="layout/plantilla :: header"></header>
+    <div class="container">
+        <div class="col-5 col-md-5 offset-md-3">
+        <br>
+            <h1 class= "text-center">Creación del libro</h1>
+            <form th:action="@{/views/libro/save}" th:object="${libro}" method="POST">
+            <div class="form-group">
+                    <label for="id_libro">ID:</label>
+                    <input type="text" th:field="*{id_libro}" class="form-control" id="idLibro"/>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Titulo:</label>
+                    <input type="text" th:field="*{titulo}" class="form-control" id="titulo"/>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="autor">Autor:</label>
+                    <textarea th:field="*{autor}" class="form-control" id="autor"></textarea>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="genero">genero:</label>
+                    <input type="text" th:field="*{genero}" class="form-control" id="genero"/>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="text" th:field="*{precio}" class="form-control" id="precio"/>
+                 
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock:</label>
+                    <input type="text" th:field="*{stock}" class="form-control" id="stock"/>
+                   
+                </div>
+                <div class="form-group">
+                    <label for="stock">Imagen:</label>
+                    <input type="text" th:field="*{imagen}" class="form-control" id="stock"/>
+                   
+                </div>
+              
+                <br><br>
+                <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">
+                <img src="/img/IconoGuardar.png" alt="Guardar" style="width: 80px; height: 80px;"></button>
+                </div>
+                <br><br>
+                <br><br>
+                <br><br>
+            </form>
+        </div>
+    </div>
+    <footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>

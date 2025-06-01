@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Libro Seleccionado</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+</head>
+<header th:replace="layout/plantilla :: header"></header>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Agregar Libro Seleccionado</h1>
+        <form action="/views/libroSeleccionado/save" method="post">
+        
+            <div class="form-group">
+                <label for="id_libro">Libro:</label>
+                <select id="id_libro" name="libro.id_libro" class="form-control" required>
+                    <option value="" disabled selected>-- Seleccione --</option>
+                    <option th:each="libro : ${listaLibros}" th:value="${libro.id_libro}" th:text="${libro.titulo}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_usuario">Usuario:</label>
+                <select id="id_usuario" name="usuarios.id" class="form-control" required>
+                    <option value="" disabled selected>-- Seleccione --</option>
+                    <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_factura">Factura:</label>
+                <select id="id_factura" name="factura.id" class="form-control" required>
+                    <option value="" disabled selected>-- Seleccione --</option>
+                    <option th:each="factura : ${listaFacturas}" th:value="${factura.id}" th:text="${factura.id}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="comprallave">Compra Llave:</label>
+                <input type="text" id="comprallave" name="comprallave" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/views/libroSeleccionado" class="btn btn-secondary">Regresar</a>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: uts.edu.java.corte2.ProyectoCorte2ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.725 s - in uts.edu.java.corte2.ProyectoCorte2ApplicationTests

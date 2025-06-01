@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura de los libros comprados</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+</head>
+<header th:replace="layout/plantilla :: header"></header>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Factura del libro</h1>
+        <a href="/views/libroSeleccionado/new" class="btn btn-primary mb-3">Nueva factura</a>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>ID Libro</th>
+                    <th>ID Usuario</th>
+                    <th>ID Factura</th>
+                    <th>Cantidad</th>
+                    <th>Compra Llave</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="libroSeleccionado : ${librosSeleccionados}">
+                    <td th:text="${libroSeleccionado.id}"></td>
+                    <td th:text="${libroSeleccionado.libro.id_libro}"></td>
+                    <td th:text="${libroSeleccionado.usuarios.id}"></td>
+                    <td th:text="${libroSeleccionado.factura.id}"></td>
+                    <td th:text="${libroSeleccionado.cantidad}"></td>
+                    <td th:text="${libroSeleccionado.comprallave}"></td>
+                    <td>
+                        <a th:href="@{/views/libroSeleccionado/edit/{id}(id=${libroSeleccionado.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/views/libroSeleccionado/delete/{id}(id=${libroSeleccionado.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

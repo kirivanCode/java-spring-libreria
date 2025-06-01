@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla.html :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restless Dreams - Librería Virtual</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+    <style>
+        body {
+            background-image: url('img/background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+       
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .custom-bg {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .genre-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            transition: transform 0.3s;
+        }
+        .genre-card:hover {
+            transform: scale(1.05);
+        }
+        .genre-card img {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+        .gallery-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gallery-section img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            opacity: 0.8;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .gallery-section img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .contact-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .genre-card img {
+                height: 150px;
+            }
+            .genre-card .card-body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="container" th:replace="layout/plantilla.html :: header"></header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container custom-bg py-4">
+        <!-- Sección de Introducción -->
+        <section class="text-center mb-5">
+            <h1>Bienvenido a Restless Dreams</h1>
+            <p>Tu librería virtual con los mejores libros de todos los géneros</p>
+        </section>
+
+        <!-- Sección de Géneros de Libros -->
+        <section>
+            <h2 class="text-center mb-4">Géneros de Libros</h2>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <div class="card genre-card">
+                        <img src="img/fantasia.jpg" class="card-img-top" alt="Fantasía">
+                        <div class="card-body">
+                            <h5 class="card-title">Fantasía</h5>
+                            <p class="card-text">Sumérgete en mundos mágicos y aventuras épicas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <div class="card genre-card">
+                        <img src="img/ciencia_fiction.jpg" class="card-img-top" alt="Ciencia Ficción">
+                        <div class="card-body">
+                            <h5 class="card-title">Ciencia Ficción</h5>
+                            <p class="card-text">Explora el futuro y los límites del universo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <div class="card genre-card">
+                        <img src="img/misterio.jpg" class="card-img-top" alt="Misterio">
+                        <div class="card-body">
+                            <h5 class="card-title">Misterio</h5>
+                            <p class="card-text">Descubre los secretos más oscuros y resuelve enigmas intrigantes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <div class="card genre-card">
+                        <img src="img/romance.jpg" class="card-img-top" alt="Romance">
+                        <div class="card-body">
+                            <h5 class="card-title">Romance</h5>
+                            <p class="card-text">Vive las historias de amor más apasionantes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Imágenes Relacionadas -->
+        <section class="gallery-section text-center">
+            <h3>Galería de Imágenes</h3>
+            <div>
+                <img src="img/galeria1.jpg" alt="Imagen 1">
+                <img src="img/galeria2.jpg" alt="Imagen 2">
+                <img src="img/galeria3.jpg" alt="Imagen 3">
+                <img src="img/galeria4.jpg" alt="Imagen 4">
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section class="contact-section text-center mt-5">
+            <h3>Contacto</h3>
+            <p>Para más información, no dudes en contactarnos a través de nuestras redes sociales o envíanos un mensaje.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="text-white"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin fa-2x"></i></a>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FOOTER -->
+    <footer th:replace="layout/plantilla.html :: footer"></footer>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
+

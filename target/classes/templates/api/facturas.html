@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Facturas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Facturas</h1>
+        <a class="btn btn-primary" th:href="@{/facturas/nuevo}">Nueva Factura</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="factura : ${facturas}">
+                    <td th:text="${facturas.id}">1</td>
+                    <td th:text="${.total}">100.00</td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/facturas/{id}(id=${factura.id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{/facturas/eliminar/{id}(id=${factura.id})}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
