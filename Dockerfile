@@ -1,14 +1,13 @@
-# Usa una imagen oficial de Java 17
-FROM eclipse-temurin:17-jdk
-
-# Crea y usa un directorio de trabajo
+# Etapa 1: Build con Maven y Java 8
+FROM maven:3.8.6-openjdk-8 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copia el archivo .jar generado al contenedor
-COPY target/*.jar app.jar
-
-# Expón el puerto por defecto de Spring Boot
+# Etapa 2: Runtime con Java 8
+FROM openjdk:8-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/ProyectoCorte2-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Comando para ejecutar la app
 ENTRYPOINT ["java", "-jar", "app.jar"]
