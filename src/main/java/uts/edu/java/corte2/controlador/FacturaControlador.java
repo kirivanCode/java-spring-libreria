@@ -20,20 +20,20 @@ public class FacturaControlador {
     public String listarFacturas(Model model) {
         List<Factura> facturas = facturaServicio.listarTodas();
         model.addAttribute("facturas", facturas);
-        return "/views/facturas/facturas";
+        return "views/facturas/facturas";
     }
 
     @GetMapping("/nuevo")
     public String mostrarFormularioDeNuevaFactura(Model model) {
         model.addAttribute("factura", new Factura());
-        return "/views/facturas/factura_form";
+        return "views/facturas/factura_form";
     }
 
     @GetMapping("/editar/{id}")
     public String mostrarFormularioDeEditarFactura(@PathVariable Long id, Model model) {
         Factura factura = facturaServicio.obtenerPorId(id).orElseThrow(() -> new IllegalArgumentException("Factura inválida Id:" + id));
         model.addAttribute("factura", factura);
-        return "/views/facturas/factura_form";
+        return "views/facturas/factura_form";
     }
 
     @PostMapping("/guardar")
